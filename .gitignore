@@ -1,4 +1,10 @@
 .sites-runtime/
 .tmp/
 .codebase-memory/
+node_modules/
+dist/
+*.tsbuildinfo
 *.tgz
+
+# graft's local graph cache — regenerable, not committed (run `graft build`).
+/graft/
