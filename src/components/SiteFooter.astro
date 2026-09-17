@@ -1,5 +1,6 @@
 ---
 import Brand from "./Brand.astro";
+const bookingUrl = "https://cal.com/nikilesh-kopparthi-olnifa/quick-chat";
 ---
 <footer class="journal-footer">
   <div class="journal-footer-inner">
@@ -8,7 +9,7 @@ import Brand from "./Brand.astro";
       <a href="/blog/">Research journal</a>
       <a href="/white-paper/">White paper</a>
       <a href="/#faq">FAQ</a>
-      <a href="/#pilot">Plan a pilot</a>
+      <a href={bookingUrl} target="_blank" rel="noopener noreferrer">Plan a pilot ↗</a>
     </nav>
     <div class="journal-footer-meta"><span>Screening supports expert review.</span><span>© 2026 PalmWatch</span></div>
   </div>

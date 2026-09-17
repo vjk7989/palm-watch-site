@@ -6,6 +6,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./
 import { Sheet, SheetClose, SheetContent, SheetTitle, SheetTrigger } from "./components/ui/sheet";
 
 const asset = (name: string) => `${import.meta.env.BASE_URL}assets/${name}`;
+const bookingUrl = "https://cal.com/nikilesh-kopparthi-olnifa/quick-chat";
 
 interface Solution { title: string; description: string; image: string; alt: string; tags: string[]; }
 interface Service { title: string; description: string; image: string; alt: string; }
@@ -67,14 +68,14 @@ function App() {
       <nav className="nav-shell" aria-label="Main navigation">
         <a href="#home" aria-label="PalmWatch home"><Brand /></a>
         <div className="nav-links">{navItems.map(([label, href]) => <a key={href} href={href}>{label}</a>)}</div>
-        <Button asChild className="nav-cta"><a href="#pilot">Plan a pilot <span aria-hidden="true">↗</span></a></Button>
+        <Button asChild className="nav-cta"><a href={bookingUrl} target="_blank" rel="noopener noreferrer">Plan a pilot <span aria-hidden="true">↗</span></a></Button>
         <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
           <SheetTrigger asChild><button className="menu-toggle" type="button" aria-label="Open navigation"><Menu aria-hidden="true" /></button></SheetTrigger>
           <SheetContent>
             <SheetTitle className="sr-only">Main navigation</SheetTitle>
             <a className="sheet-brand" href="#home" aria-label="PalmWatch home" onClick={() => setMenuOpen(false)}><Brand /></a>
             <div className="sheet-links">{navItems.map(([label, href]) => <SheetClose asChild key={href}><a href={href}>{label}</a></SheetClose>)}</div>
-            <SheetClose asChild><Button asChild><a href="#pilot">Plan a pilot <span aria-hidden="true">↗</span></a></Button></SheetClose>
+            <SheetClose asChild><Button asChild><a href={bookingUrl} target="_blank" rel="noopener noreferrer">Plan a pilot <span aria-hidden="true">↗</span></a></Button></SheetClose>
           </SheetContent>
         </Sheet>
       </nav>
@@ -99,7 +100,7 @@ function App() {
       </section>
 
       <section className="solutions section" id="solutions">
-        <div className="solutions-intro"><div><p className="section-label">Our solutions</p><h2>One platform. Complete oil-palm intelligence.</h2></div><Button asChild><a href="#pilot">Plan a pilot <span aria-hidden="true">↗</span></a></Button></div>
+        <div className="solutions-intro"><div><p className="section-label">Our solutions</p><h2>One platform. Complete oil-palm intelligence.</h2></div><Button asChild><a href={bookingUrl} target="_blank" rel="noopener noreferrer">Plan a pilot <span aria-hidden="true">↗</span></a></Button></div>
         <div className="solution-grid">{solutions.map((solution, index) => <article className="solution-card" key={solution.title}><img src={asset(solution.image)} alt={solution.alt} loading="lazy" decoding="async"/><div className="solution-shade"/><div className="solution-copy"><span className="card-index">0{index + 1}</span><h3>{solution.title}</h3><p>{solution.description}</p><div className="tags">{solution.tags.map((tag) => <span key={tag}>{tag}</span>)}</div></div></article>)}</div>
       </section>
 
@@ -130,10 +131,10 @@ function App() {
 
       <section className="faq section" id="faq"><div className="faq-title"><p className="section-label">Questions, answered</p><h2>Clear science.<br/>Useful action.</h2></div><Accordion className="accordion" type="single" defaultValue="diagnosis" collapsible><AccordionItem value="diagnosis"><AccordionTrigger>Does PalmWatch diagnose Ganoderma?</AccordionTrigger><AccordionContent>No. PalmWatch detects patterns consistent with elevated risk and prioritises palms for expert inspection. Field or laboratory confirmation remains essential.</AccordionContent></AccordionItem><AccordionItem value="repeat"><AccordionTrigger>Why are repeat surveys necessary?</AccordionTrigger><AccordionContent>A persistent decline while nearby palms remain stable is more informative than a single unusual reading. Repetition also reduces seasonal and flight-condition noise.</AccordionContent></AccordionItem><AccordionItem value="target"><AccordionTrigger>What is the initial model target?</AccordionTrigger><AccordionContent>The realistic first target is a three-way screen: healthy, other stress, and suspected Ganoderma. More detailed disease and severity labels require sufficient confirmed samples.</AccordionContent></AccordionItem><AccordionItem value="split"><AccordionTrigger>How is research data divided?</AccordionTrigger><AccordionContent>Training, validation, and locked testing should be separated by farm—not randomly by tree—to prevent information leakage between similar palms from the same location.</AccordionContent></AccordionItem></Accordion></section>
 
-      <section className="pilot" id="pilot" style={{ backgroundImage: `url(${asset("palmwatch-hero.webp")})` }}><div className="pilot-shade"/><div className="pilot-inner"><p>Build the evidence base</p><h2>Ready to move from a demo to a validated field study?</h2><Button asChild><a href="#research">Review the study scope <ArrowUp size={17} aria-hidden="true"/></a></Button></div></section>
+      <section className="pilot" id="pilot" style={{ backgroundImage: `url(${asset("palmwatch-hero.webp")})` }}><div className="pilot-shade"/><div className="pilot-inner"><p>Build the evidence base</p><h2>Ready to move from a demo to a validated field study?</h2><Button asChild><a href={bookingUrl} target="_blank" rel="noopener noreferrer">Book a quick chat <ArrowUp size={17} aria-hidden="true"/></a></Button></div></section>
     </main>
 
-    <footer className="footer-stage" style={{ backgroundImage: `url(${asset("palmwatch-hero.webp")})` }}><div className="footer-shade"/><div className="footer-tab"><div className="footer-brand"><a href="#home" aria-label="PalmWatch home"><Brand /></a><p>Oil-palm intelligence,<br/>tree by tree.</p></div><div className="footer-column"><strong>Explore</strong><a href="#overview">Overview</a><a href="#solutions">Solutions</a><a href="#services">Services</a><a href="#features">Features</a></div><div className="footer-column"><strong>Research</strong><a href="/blog/">Research journal</a><a href="/white-paper/">White paper</a><a href={asset("palmwatch-whitepaper.pdf")} target="_blank" rel="noreferrer">Download PDF ↗</a></div><div className="footer-column"><strong>Actions</strong><a href="#pilot">Plan a pilot</a><a href="#research">Review evidence</a><a href="#home">Back to top ↑</a></div><div className="footer-bottom"><span>AI-assisted screening. Field-confirmed decisions.</span><span>© 2026 PalmWatch. All rights reserved.</span></div></div></footer>
+    <footer className="footer-stage" style={{ backgroundImage: `url(${asset("palmwatch-hero.webp")})` }}><div className="footer-shade"/><div className="footer-tab"><div className="footer-brand"><a href="#home" aria-label="PalmWatch home"><Brand /></a><p>Oil-palm intelligence,<br/>tree by tree.</p></div><div className="footer-column"><strong>Explore</strong><a href="#overview">Overview</a><a href="#solutions">Solutions</a><a href="#services">Services</a><a href="#features">Features</a></div><div className="footer-column"><strong>Research</strong><a href="/blog/">Research journal</a><a href="/white-paper/">White paper</a><a href={asset("palmwatch-whitepaper.pdf")} target="_blank" rel="noreferrer">Download PDF ↗</a></div><div className="footer-column"><strong>Actions</strong><a href={bookingUrl} target="_blank" rel="noopener noreferrer">Plan a pilot ↗</a><a href="#research">Review evidence</a><a href="#home">Back to top ↑</a></div><div className="footer-bottom"><span>AI-assisted screening. Field-confirmed decisions.</span><span>© 2026 PalmWatch. All rights reserved.</span></div></div></footer>
   </>;
 }
 

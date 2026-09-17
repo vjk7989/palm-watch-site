@@ -1,5 +1,6 @@
 ---
 import Brand from "./Brand.astro";
+const bookingUrl = "https://cal.com/nikilesh-kopparthi-olnifa/quick-chat";
 ---
 <header class="article-header">
   <nav class="article-nav" aria-label="Primary navigation">
@@ -10,6 +11,6 @@ import Brand from "./Brand.astro";
       <a href="/blog/">Research journal</a>
       <a href="/white-paper/">White paper</a>
     </div>
-    <a class="button button-lime article-nav-cta" href="/#pilot">Plan a pilot <span aria-hidden="true">↗</span></a>
+    <a class="button button-lime article-nav-cta" href={bookingUrl} target="_blank" rel="noopener noreferrer">Plan a pilot <span aria-hidden="true">↗</span></a>
   </nav>
 </header>
