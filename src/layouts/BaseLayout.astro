@@ -1,0 +1,67 @@
+---
+import "../index.css";
+import dm400 from "@fontsource/dm-sans/files/dm-sans-latin-400-normal.woff2?url";
+import dm500 from "@fontsource/dm-sans/files/dm-sans-latin-500-normal.woff2?url";
+import dm600 from "@fontsource/dm-sans/files/dm-sans-latin-600-normal.woff2?url";
+import dm700 from "@fontsource/dm-sans/files/dm-sans-latin-700-normal.woff2?url";
+import manrope400 from "@fontsource/manrope/files/manrope-latin-400-normal.woff2?url";
+import manrope500 from "@fontsource/manrope/files/manrope-latin-500-normal.woff2?url";
+import manrope600 from "@fontsource/manrope/files/manrope-latin-600-normal.woff2?url";
+import manrope700 from "@fontsource/manrope/files/manrope-latin-700-normal.woff2?url";
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: "website" | "article";
+  noindex?: boolean;
+  structuredData?: Record<string, unknown> | Record<string, unknown>[];
+}
+
+const {
+  title,
+  description,
+  image = "/assets/palmwatch-hero.png",
+  type = "website",
+  noindex = false,
+  structuredData,
+} = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const socialImage = new URL(image, Astro.site);
+const schemas = structuredData ? (Array.isArray(structuredData) ? structuredData : [structuredData]) : [];
+const fontFaces = [
+  ["DM Sans", 400, dm400], ["DM Sans", 500, dm500], ["DM Sans", 600, dm600], ["DM Sans", 700, dm700],
+  ["Manrope", 400, manrope400], ["Manrope", 500, manrope500], ["Manrope", 600, manrope600], ["Manrope", 700, manrope700],
+].map(([family, weight, source]) => `@font-face{font-family:"${family}";font-style:normal;font-display:optional;font-weight:${weight};src:url("${source}") format("woff2")}`).join("");
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#082b26" />
+    <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex,follow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate" type="application/rss+xml" title="PalmWatch Research" href="/rss.xml" />
+    <style set:html={fontFaces} />
+    <meta property="og:type" content={type} />
+    <meta property="og:site_name" content="PalmWatch" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={socialImage} />
+    <meta property="og:image:alt" content="Aerial view of a monitored oil-palm estate" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={socialImage} />
+    <title>{title}</title>
+    {schemas.map((schema) => <script type="application/ld+json" set:html={JSON.stringify(schema)} />)}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

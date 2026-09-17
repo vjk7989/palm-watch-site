@@ -1,0 +1,22 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import SiteHeader from "../../components/SiteHeader.astro";
+import SiteFooter from "../../components/SiteFooter.astro";
+
+const posts = (await getCollection("blog")).sort((a, b) => b.data.publishedAt.valueOf() - a.data.publishedAt.valueOf());
+---
+<BaseLayout title="Oil-palm health research journal | PalmWatch" description="Cited explainers on Ganoderma, yield exposure, satellite monitoring, drone surveys, and field-confirmed oil-palm health intelligence.">
+  <a class="skip-link" href="#journal">Skip to research journal</a>
+  <SiteHeader />
+  <main id="journal" class="journal-page">
+    <header class="journal-hero"><p>PalmWatch research journal</p><h1>Better estate decisions begin with better questions.</h1><div><p>Cited, plain-language field notes on disease risk, remote sensing, and the limits that keep screening scientifically honest.</p><a href="/white-paper/">Read the white paper →</a></div></header>
+    <section class="journal-grid" aria-label="Published research articles">
+      {posts.map((post, index) => <article class:list={["journal-card", { "journal-card-featured": index === 0 }]}>
+        <a href={`/blog/${post.id}/`} aria-label={`Read ${post.data.title}`}><img src={post.data.heroImage} alt={post.data.heroAlt} width="900" height="650" loading={index === 0 ? "eager" : "lazy"} /></a>
+        <div><div class="journal-card-meta"><span>{post.data.tags[0]}</span><span>{post.data.readingMinutes} min</span></div><h2><a href={`/blog/${post.id}/`}>{post.data.title}</a></h2><p>{post.data.description}</p><a class="text-link" href={`/blog/${post.id}/`}>Read the evidence →</a></div>
+      </article>)}
+    </section>
+  </main>
+  <SiteFooter />
+</BaseLayout>

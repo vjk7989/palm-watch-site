@@ -1,0 +1,95 @@
+---
+title: "Drone imagery for oil-palm health: what closer mapping adds"
+description: "A practical guide to RGB, multispectral, and thermal drone evidence, calibration, repeatability, and field validation in oil-palm monitoring."
+publishedAt: 2026-09-15
+updatedAt: 2026-09-18
+author: "PalmWatch Research Team"
+tags: ["Drone mapping", "Multispectral", "Field verification"]
+heroImage: "/assets/palmwatch-drone.webp"
+heroAlt: "Survey drone flying above an oil-palm plantation"
+readingMinutes: 9
+featured: false
+sources:
+  - label: "UAV-Based Remote Sensing for Early-Stage Detection of Ganoderma"
+    url: "https://doi.org/10.3390/rs14051239"
+    publisher: "Remote Sensing"
+    year: 2022
+  - label: "Basal Stem Rot of Oil Palm: The Pathogen, Disease Incidence, and Control Methods"
+    url: "https://doi.org/10.1094/PDIS-02-22-0358-FE"
+    publisher: "Plant Disease"
+    year: 2023
+faqs:
+  - question: "Why use a drone after satellite screening?"
+    answer: "A drone can collect higher-resolution evidence over priority blocks, allowing closer comparison of crowns and reducing the area that needs intensive acquisition."
+  - question: "Is NDVI enough to detect Ganoderma?"
+    answer: "No. NDVI is sensitive to vegetation condition but is not disease-specific. A defensible review combines spectral, structural, temporal, contextual, and field evidence."
+  - question: "What makes two drone surveys comparable?"
+    answer: "Repeatable flight geometry, suitable weather and illumination, sensor calibration, overlap, ground control where required, consistent processing, and documented quality checks."
+---
+
+## Short answer
+
+Drone surveys move the observation scale closer to individual crowns. They can provide centimetre-scale RGB imagery and, depending on the payload, multispectral or thermal measurements over selected blocks. That detail can help teams examine canopy structure, colour, reflectance patterns, temperature differences, and spatial clustering.
+
+The decisive word is **selected**. Drone acquisition is most efficient when satellite time series and estate records first identify where closer evidence is worth collecting.
+
+## What each payload contributes
+
+### RGB imagery
+
+Standard red, green, and blue imagery supports visual and structural assessment. Depending on resolution and canopy conditions, teams can derive or review crown area, symmetry, gaps, frond arrangement, discolouration, missing palms, access constraints, and visible management changes.
+
+RGB is intuitive, but visual symptoms can be non-specific and late. A yellowing crown does not identify its biological cause.
+
+### Multispectral imagery
+
+Multispectral cameras record selected wavelength bands, often including red edge and near infrared. Derived indices can describe relative vegetation response, but they inherit sensitivity to illumination, calibration, canopy geometry, background, sensor response, and processing.
+
+No universal NDVI or NDRE threshold diagnoses Ganoderma. The useful question is whether multiple calibrated observations show persistent, locally unusual change that agrees with other evidence.
+
+### Thermal imagery
+
+Thermal cameras can map apparent canopy temperature. Water status, transpiration, sunlight, wind, humidity, viewing geometry, and time of day all influence the result. Thermal patterns need carefully controlled acquisition and contextual interpretation.
+
+A warm crown may deserve review. It does not reveal a pathogen by itself.
+
+## Calibration is part of the data
+
+Two maps can look similar while representing incompatible measurements. A repeat-monitoring protocol should record:
+
+- sensor and lens;
+- flight altitude and ground-sampling distance;
+- frontlap and sidelap;
+- acquisition time and illumination;
+- weather and wind;
+- radiometric reference procedure;
+- positioning and ground control;
+- processing software and parameters; and
+- exclusions, artefacts, and quality flags.
+
+Without this record, apparent temporal change may come from the survey rather than the palms.
+
+## From orthomosaic to palm record
+
+An orthomosaic is not the final product. The operating value appears when observations are linked to stable palm or block identities. Each record should preserve the source image, survey date, derived measurements, comparison group, alert rationale, and subsequent field finding.
+
+This avoids an easy failure mode: generating a beautiful map that cannot be connected to an agronomist's inspection or a later survey.
+
+## What research supports—and does not
+
+A 2022 field study reported potential for UAV imagery from a modified digital camera combined with an artificial neural network to detect Ganoderma-related classes under its study conditions. That is promising evidence for research and validation. It is not proof that the same model, sensor, labels, and thresholds will generalise to every country, cultivar, age, season, or estate.
+
+Any operational model should therefore be tested on farms that were excluded from training. Randomly splitting palms from the same farm can leak location-specific patterns into both training and testing and make results look stronger than real deployment.
+
+## PalmWatch's drone role
+
+PalmWatch uses drones as the closer evidence layer between satellite screening and field confirmation:
+
+1. Satellite time series identify persistent broad change.
+2. Estate context and management records remove obvious confounders.
+3. Drone surveys collect higher-resolution evidence over selected areas.
+4. A review queue explains which signals contributed.
+5. Field teams inspect and attach findings.
+6. Repeat surveys monitor unresolved or treated cases.
+
+The best outcome is not “AI found disease.” It is “the team reached a better-evidenced field decision with less unfocused searching.”

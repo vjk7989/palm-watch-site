@@ -1,0 +1,10 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+---
+<BaseLayout title="Page not found | PalmWatch" description="The requested PalmWatch page could not be found." noindex>
+  <SiteHeader />
+  <main class="not-found"><p>404</p><h1>This path ends here.</h1><p>The estate record may have moved. Return to the overview or continue through the research journal.</p><div><a class="button button-lime" href="/">Back to PalmWatch</a><a class="text-link" href="/blog/">Research journal →</a></div></main>
+  <SiteFooter />
+</BaseLayout>

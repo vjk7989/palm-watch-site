@@ -1,0 +1,70 @@
+---
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "./BaseLayout.astro";
+import SiteHeader from "../components/SiteHeader.astro";
+import SiteFooter from "../components/SiteFooter.astro";
+
+interface Props { post: CollectionEntry<"blog">; }
+const { post } = Astro.props;
+const canonical = new URL(`/blog/${post.id}/`, Astro.site).toString();
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: post.data.title,
+  description: post.data.description,
+  datePublished: post.data.publishedAt.toISOString(),
+  dateModified: post.data.updatedAt.toISOString(),
+  author: { "@type": "Organization", name: post.data.author, url: "https://palmwatch.in/white-paper/" },
+  publisher: { "@type": "Organization", name: "PalmWatch", url: "https://palmwatch.in/" },
+  image: new URL(post.data.heroImage, Astro.site).toString(),
+  mainEntityOfPage: canonical,
+};
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://palmwatch.in/" },
+    { "@type": "ListItem", position: 2, name: "Research journal", item: "https://palmwatch.in/blog/" },
+    { "@type": "ListItem", position: 3, name: post.data.title, item: canonical },
+  ],
+};
+const faqSchema = post.data.faqs.length ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: post.data.faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: { "@type": "Answer", text: faq.answer },
+  })),
+} : null;
+const structuredData = [articleSchema, breadcrumbSchema, ...(faqSchema ? [faqSchema] : [])];
+---
+<BaseLayout title={`${post.data.title} | PalmWatch`} description={post.data.description} image={post.data.heroImage} type="article" structuredData={structuredData}>
+  <a class="skip-link" href="#article-content">Skip to article</a>
+  <SiteHeader />
+  <main id="article-content" class="article-page">
+    <header class="article-hero">
+      <nav class="breadcrumbs" aria-label="Breadcrumb"><a href="/">Home</a><span>/</span><a href="/blog/">Research journal</a></nav>
+      <div class="article-hero-grid">
+        <div>
+          <div class="article-meta"><span>{post.data.tags[0]}</span><time datetime={post.data.updatedAt.toISOString()}>Updated {post.data.updatedAt.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}</time><span>{post.data.readingMinutes} min read</span></div>
+          <h1>{post.data.title}</h1>
+          <p>{post.data.description}</p>
+          <div class="article-byline"><span>By {post.data.author}</span><span>Evidence reviewed against the cited literature</span></div>
+        </div>
+        <img src={post.data.heroImage} alt={post.data.heroAlt} width="1200" height="900" fetchpriority="high" />
+      </div>
+    </header>
+    <div class="article-shell">
+      <article class="prose"><slot /></article>
+      <aside class="source-rail" aria-labelledby="sources-title">
+        <h2 id="sources-title">Primary references</h2>
+        <ol>{post.data.sources.map((source) => <li><a href={source.url} rel="noreferrer" target="_blank">{source.label}</a><span>{source.publisher}, {source.year}</span></li>)}</ol>
+        <p>PalmWatch is a screening and prioritisation platform. Disease confirmation remains a field or laboratory decision.</p>
+      </aside>
+    </div>
+    {post.data.faqs.length > 0 && <section class="article-faq" aria-labelledby="article-faq-title"><h2 id="article-faq-title">Questions this article answers</h2><div>{post.data.faqs.map((faq) => <details><summary>{faq.question}</summary><p>{faq.answer}</p></details>)}</div></section>}
+    <section class="article-next"><p>Continue the evidence trail</p><h2>See how satellite context, drone detail, and field confirmation work together.</h2><div><a class="button button-lime" href="/white-paper/">Read the white paper</a><a class="text-link" href="/blog/">Browse all research →</a></div></section>
+  </main>
+  <SiteFooter />
+</BaseLayout>

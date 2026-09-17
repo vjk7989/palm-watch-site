@@ -131,9 +131,9 @@ def page_cover(c):
     c.drawString(90, H - 73, "PalmWatch")
     c.setFillColor(LIME)
     c.setFont(BOLD, 9)
-    c.drawString(52, H - 224, "WHITE PAPER / VERSION 1.0")
-    paragraph(c, "Evidence-led<br/>oil-palm intelligence", 52, H - 258, W - 104, size=36, leading=38, color=WHITE, font=BOLD)
-    paragraph(c, "A proposed research and operating framework for connecting calibrated aerial evidence, palm-level history, and field confirmation.", 52, H - 385, 390, size=13, leading=19, color=WHITE)
+    c.drawString(52, H - 224, "WHITE PAPER / VERSION 2.0")
+    paragraph(c, "Satellite-to-field<br/>oil-palm intelligence", 52, H - 258, W - 104, size=36, leading=38, color=WHITE, font=BOLD)
+    paragraph(c, "An evidence-led framework for connecting repeat satellite context, targeted drone mapping, palm-level history, and field confirmation.", 52, H - 385, 400, size=13, leading=19, color=WHITE)
     rounded_box(c, 52, 75, W - 104, 82, Color(1, 1, 1, alpha=.92), 16)
     c.setFillColor(FOREST)
     c.setFont(BOLD, 11)
@@ -141,17 +141,17 @@ def page_cover(c):
     c.setFillColor(MUTED)
     c.setFont(FONT, 9)
     c.drawString(70, 102, "Screening supports expert review; it does not replace field or laboratory confirmation.")
-    c.drawString(70, 84, "September 2026  |  palmwatch site")
+    c.drawString(70, 84, "September 2026  |  palmwatch.in")
     c.showPage()
 
 
 def page_summary(c):
     header(c, "Executive summary", 2)
-    title(c, "Why PalmWatch", "A continuous record for every palm.", "PalmWatch is being developed as a field-research platform that turns repeat aerial surveys into a transparent review queue for expert inspection.")
+    title(c, "Why PalmWatch", "A continuous record from estate to palm.", "PalmWatch uses repeat satellite observations for broad context, targeted drone surveys for closer evidence, and field findings for confirmation.")
     y = 520
     cards = [
         ("01", "Identity before inference", "Every mapped palm receives a stable identifier, baseline, and time-linked observation history."),
-        ("02", "Signals in agreement", "Spectral, structural, thermal, temporal, and contextual evidence are reviewed together."),
+        ("02", "Two observation scales", "Satellite time series screen broad change; drone surveys add selective crown-level detail."),
         ("03", "Verification closes the loop", "Field findings and, when required, laboratory confirmation remain attached to the record."),
     ]
     for number, heading, body in cards:
@@ -230,9 +230,9 @@ def page_workflow(c):
     header(c, "Operating workflow", 5)
     title(c, "Five connected services", "From map to monitored outcome.", "Each service produces a traceable hand-off rather than an isolated dashboard event.")
     steps = [
-        ("01", "Map & inventory", "Estate boundaries, blocks, and stable palm identities."),
-        ("02", "Calibrated survey", "Repeat RGB, multispectral, and thermal capture under field protocols."),
-        ("03", "Risk screening", "Palm history and relevant neighbours reveal persistent change."),
+        ("01", "Satellite watch", "Repeat estate-wide optical observations with weather, terrain, and soil context."),
+        ("02", "Change screening", "Persistent block and neighbourhood trends enter a transparent review queue."),
+        ("03", "Targeted drone survey", "Priority areas receive calibrated RGB, multispectral, and thermal capture."),
         ("04", "Field verification", "Agronomists inspect prioritised palms and attach findings."),
         ("05", "Monitor & report", "Follow-ups connect intervention, outcome, and estate-level reporting."),
     ]
@@ -255,8 +255,64 @@ def page_workflow(c):
     c.showPage()
 
 
+def page_scale(c):
+    header(c, "Satellite and drone evidence", 6)
+    title(c, "Cross-scale monitoring", "Breadth first. Detail where it matters.", "Satellite and drone systems answer different questions. PalmWatch connects them without presenting either layer as a diagnosis.")
+    rows = [
+        ("Best use", "Repeat estate context", "Priority-block detail"),
+        ("Coverage", "Large systematic footprints", "Selective flight areas"),
+        ("Strength", "Temporal and spatial overview", "Closer spectral and structural evidence"),
+        ("Limit", "Cloud and mixed pixels", "Calibration and flight-condition sensitivity"),
+        ("Decision", "Where should we look?", "What should field teams review?"),
+    ]
+    x0, y0 = 42, 505
+    widths = [105, 190, 174]
+    labels = ["Question", "Satellite layer", "Drone layer"]
+    c.setFillColor(FOREST)
+    c.roundRect(x0, y0, sum(widths), 42, 10, stroke=0, fill=1)
+    x = x0
+    for label, width in zip(labels, widths):
+        c.setFillColor(WHITE)
+        c.setFont(BOLD, 9)
+        c.drawString(x + 12, y0 + 16, label)
+        x += width
+    y = y0 - 57
+    for label, sat, drone in rows:
+        rounded_box(c, x0, y, sum(widths), 48, GREEN_GREY if int((y0-y)/57) % 2 else SURFACE, 8)
+        x = x0
+        for value, width in zip([label, sat, drone], widths):
+            paragraph(c, value, x + 12, y + 33, width - 20, size=8.6, leading=11, color=FOREST, font=BOLD if x == x0 else FONT)
+            x += width
+        y -= 57
+    rounded_box(c, 42, 98, W - 84, 84, FOREST, 14)
+    paragraph(c, "Sentinel-2 provides 13 spectral bands at 10 m, 20 m, and 60 m native resolutions with a nominal five-day two-satellite revisit. Usable tropical observations can be less frequent because cloud and haze still matter.", 60, 158, W - 120, size=9.5, leading=14, color=WHITE)
+    c.showPage()
+
+
+def page_ganoderma(c):
+    header(c, "Ganoderma impact", 7)
+    title(c, "Yield exposure", "Per-acre loss needs assumptions, not slogans.", "Published figures describe specific study populations. Estate exposure depends on incidence, palm age, attainable yield, disease progress, price, and management response.")
+    rounded_box(c, 42, 414, W - 84, 128, LIME, 16)
+    c.setFillColor(FOREST)
+    c.setFont(BOLD, 28)
+    c.drawString(62, 482, "0.016-1.76 t/acre")
+    paragraph(c, "Approximate conversion of the 0.04-4.34 t/ha FFB reduction reported across 10- to 22-year plantings in a Johor case study.", 62, 460, W - 124, size=9.5, leading=13, color=FOREST)
+    rounded_box(c, 42, 272, W - 84, 112, GREEN_GREY, 16)
+    c.setFillColor(FOREST)
+    c.setFont(BOLD, 25)
+    c.drawString(62, 331, "Up to 68%")
+    paragraph(c, "A separate Bayesian model estimated loss relative to attainable yield among infected palms. It is not a whole-estate default.", 62, 310, W - 124, size=9.5, leading=13, color=FOREST)
+    c.setFillColor(FOREST)
+    c.setFont(BOLD, 13)
+    c.drawString(42, 228, "Transparent scenario formula")
+    rounded_box(c, 42, 157, W - 84, 50, FOREST, 10)
+    paragraph(c, "hectares x affected share x healthy FFB yield x yield-loss fraction", 60, 191, W - 120, size=10, leading=14, color=WHITE, font=BOLD)
+    paragraph(c, "Revenue exposure may be estimated with a dated price per tonne, but it excludes treatment, mortality, replanting, delayed production, and recovery effects.", 42, 132, W - 84, size=9.2, leading=13, color=MUTED)
+    c.showPage()
+
+
 def page_validation(c):
-    header(c, "Validation", 6)
+    header(c, "Validation", 8)
     title(c, "Research discipline", "Build evidence that can survive a new farm.", "Validation should test whether the approach generalises across locations, seasons, and management contexts - not whether it remembers a familiar plantation.")
     columns = [
         ("Farm-level split", "Keep palms from one farm in only one of training, validation, or locked testing."),
@@ -283,7 +339,7 @@ def page_validation(c):
 
 
 def page_outputs(c):
-    header(c, "Outputs and limits", 7)
+    header(c, "Outputs and limits", 9)
     title(c, "What teams receive", "Decision support with an audit trail.", "The platform is designed to keep the estate view connected to the palm, observation, assignment, and field outcome.")
     image_crop(c, FIELD, 42, 316, 220, 210)
     rounded_box(c, 278, 316, W - 320, 210, FOREST, 14)
@@ -310,6 +366,31 @@ def page_outputs(c):
     c.showPage()
 
 
+def page_references(c):
+    header(c, "Selected references", 10)
+    title(c, "Evidence register", "Sources behind the framework.", "PalmWatch separates published evidence, proposed study targets, and future deployment results.")
+    references = [
+        ("Roslan Abas & Idris Abu Seman (2012)", "Economic Impact of Ganoderma Incidence on Malaysian Oil Palm Plantation. MPOB Oil Palm Industry Economic Journal."),
+        ("Kamu et al. (2021)", "Estimating the Yield Loss of Oil Palm Due to Ganoderma Basal Stem Rot Disease. Journal of Oil Palm Research. DOI: 10.21894/jopr.2020.0061"),
+        ("Izzuddin et al. (2022)", "UAV-Based Remote Sensing for Early-Stage Detection of Ganoderma. Remote Sensing 14(5):1239."),
+        ("European Space Agency (2026)", "Sentinel-2 facts and figures: 13 bands, 10/20/60 m spatial resolution, nominal five-day constellation revisit."),
+        ("Szulczyk et al. (2020)", "Estimating the economic damage and treatment cost of basal stem rot. Forest Policy and Economics 116:102163."),
+        ("Flood (2006)", "A Review of Fusarium Wilt of Oil Palm. Phytopathology 96(6):660-662."),
+    ]
+    y = 505
+    for i, (name, detail) in enumerate(references):
+        c.setFillColor(LIME if i % 2 == 0 else GREEN_GREY)
+        c.circle(52, y + 3, 6, stroke=0, fill=1)
+        c.setFillColor(FOREST)
+        c.setFont(BOLD, 10)
+        c.drawString(70, y + 8, name)
+        paragraph(c, detail, 70, y - 7, W - 120, size=8.8, leading=12.5, color=MUTED)
+        y -= 66
+    rounded_box(c, 42, 76, W - 84, 62, FOREST, 12)
+    paragraph(c, "Full links and continuously updated citations are available in the HTML white paper at palmwatch.in/white-paper/.", 60, 118, W - 120, size=9.5, leading=14, color=WHITE, font=BOLD)
+    c.showPage()
+
+
 def page_close(c):
     c.setFillColor(FOREST)
     c.rect(0, 0, W, H, stroke=0, fill=1)
@@ -325,10 +406,10 @@ def page_close(c):
     paragraph(c, "This document consolidates the current PalmWatch product narrative, proposed study targets, evidence architecture, service workflow, validation rules, outputs, and limitations. It contains no deployment performance or diagnostic-accuracy claim.", 72, 326, W - 144, size=10, leading=15, color=FOREST)
     c.setFillColor(WHITE)
     c.setFont(BOLD, 10)
-    c.drawString(52, 88, "vjk7989.github.io/palm-watch-site/")
+    c.drawString(52, 88, "https://palmwatch.in/white-paper/")
     c.setFont(FONT, 8)
     c.setFillColor(Color(1, 1, 1, alpha=.65))
-    c.drawString(52, 66, "PalmWatch white paper  |  Version 1.0  |  September 2026")
+    c.drawString(52, 66, "PalmWatch white paper  |  Version 2.0  |  September 2026")
     c.showPage()
 
 
@@ -336,16 +417,19 @@ def build():
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     PUBLIC.parent.mkdir(parents=True, exist_ok=True)
     c = canvas.Canvas(str(OUTPUT), pagesize=A4, pageCompression=1)
-    c.setTitle("PalmWatch White Paper: Evidence-led oil-palm intelligence")
+    c.setTitle("PalmWatch White Paper v2: Satellite-to-field oil-palm intelligence")
     c.setAuthor("PalmWatch")
-    c.setSubject("Proposed research and operating framework")
+    c.setSubject("Satellite monitoring, targeted drone mapping, field confirmation, and Ganoderma impact")
     page_cover(c)
     page_summary(c)
     page_study(c)
     page_evidence(c)
     page_workflow(c)
+    page_scale(c)
+    page_ganoderma(c)
     page_validation(c)
     page_outputs(c)
+    page_references(c)
     page_close(c)
     c.save()
     PUBLIC.write_bytes(OUTPUT.read_bytes())

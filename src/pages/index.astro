@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import App from "../App";
+
+const structuredData = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: "PalmWatch",
+    url: "https://palmwatch.in/",
+    logo: "https://palmwatch.in/favicon.svg",
+    description: "Evidence-led oil-palm monitoring that connects satellite context, targeted drone surveys, and field confirmation.",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "PalmWatch",
+    url: "https://palmwatch.in/",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      { "@type": "Question", name: "Does PalmWatch diagnose Ganoderma?", acceptedAnswer: { "@type": "Answer", text: "No. PalmWatch screens for patterns consistent with elevated risk and prioritises palms for expert inspection. Field or laboratory confirmation remains essential." } },
+      { "@type": "Question", name: "Why are repeat surveys necessary?", acceptedAnswer: { "@type": "Answer", text: "Persistent change across repeated observations is more informative than one unusual reading and helps reduce seasonal and capture-condition noise." } },
+    ],
+  },
+];
+---
+<BaseLayout title="PalmWatch — Satellite-to-field oil-palm intelligence" description="Monitor estate-wide change with repeat satellite observations, investigate priority blocks with drones, and keep field confirmation connected to every palm." structuredData={structuredData}>
+  <App client:idle />
+</BaseLayout>
