@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PalmWatch is an AI-assisted oil-palm intelligence platform for palm-level health screening, repeat monitoring, and field action planning.">
+  <meta name="theme-color" content="#102f2a">
+  <title>PalmWatch — Oil-palm intelligence, tree by tree</title>
+  <link rel="icon" type="image/svg+xml" href="./favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="home">
+    <nav class="nav-shell" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="PalmWatch home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 42 42"><path d="M11 29c3-10 10-16 21-18-1 10-7 18-18 20"/><path class="vein" d="M14 29c4-5 9-9 16-14"/></svg>
+        </span>
+        <span>PalmWatch</span>
+      </a>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="nav-links">
+        <span class="sr-only">Toggle navigation</span><span></span><span></span>
+      </button>
+      <div class="nav-links" id="nav-links">
+        <a href="#overview">Overview</a>
+        <a href="#method">Method</a>
+        <a href="#research">Research</a>
+        <a href="#outputs">Outputs</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="button button-lime nav-cta" href="#pilot">Plan a pilot <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-image" src="./assets/palmwatch-hero.png" alt="Aerial view of a mature oil-palm plantation at sunrise">
+      <div class="hero-shade"></div>
+      <div class="hero-inner">
+        <div class="hero-copy reveal">
+          <span class="eyebrow eyebrow-dark">AI-assisted oil-palm intelligence</span>
+          <h1 id="hero-title">See the health of every palm, sooner.</h1>
+        </div>
+        <article class="hero-card reveal" aria-label="Palm-level monitoring">
+          <img src="./assets/palmwatch-drone.png" alt="Mapping drone surveying oil palms">
+          <h2>One palm. One history.</h2>
+          <p>Repeat surveys build a traceable health record for every mapped tree.</p>
+        </article>
+        <div class="hero-intro reveal">
+          <p>PalmWatch combines calibrated drone imagery, field observations, and confirmation data to screen palm health and focus inspection where it matters most.</p>
+          <a class="button button-lime" href="#method">Explore the method <span aria-hidden="true">↓</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="statement section" id="overview">
+      <div class="section-label reveal">01 / Overview</div>
+      <div class="statement-copy reveal">
+        <h2>From plantation-scale imagery to a decision for every tree.</h2>
+        <p>PalmWatch is being developed as a scientifically validated field-research platform—not a black-box diagnosis. It tracks spectral, structural, thermal, environmental, and field evidence over time, then ranks palms for expert inspection.</p>
+      </div>
+      <div class="metric-grid" aria-label="Recommended minimum NBL research design">
+        <article class="metric reveal"><strong>120</strong><span>balanced study farms</span></article>
+        <article class="metric reveal"><strong>6,000</strong><span>mapped palms</span></article>
+        <article class="metric reveal"><strong>3</strong><span>repeat survey rounds</span></article>
+        <article class="metric reveal"><strong>18,000</strong><span>tree observations</span></article>
+      </div>
+      <p class="metric-note">Recommended minimum defensible research design for the expanded NBL study; these are study targets, not deployment results.</p>
+    </section>
+
+    <section class="solutions section section-dark" id="outputs">
+      <div class="section-head reveal">
+        <div>
+          <span class="eyebrow">What the platform delivers</span>
+          <h2>One evidence trail.<br>Three decision layers.</h2>
+        </div>
+        <p>Designed for plantation leaders, agronomists, and field teams to move from signal to verified action.</p>
+      </div>
+      <div class="solution-grid">
+        <article class="solution-card reveal">
+          <div class="solution-visual canopy-map" aria-hidden="true">
+            <span class="palm p1"></span><span class="palm p2 warning"></span><span class="palm p3"></span><span class="palm p4"></span><span class="palm p5 risk"></span><span class="palm p6"></span>
+          </div>
+          <span class="card-index">01</span>
+          <h3>Palm health baseline</h3>
+          <p>Give every palm a stable identity and compare it with its own history, similar-age neighbours, and local healthy controls.</p>
+          <div class="tags"><span>Tree ID</span><span>Time series</span></div>
+        </article>
+        <article class="solution-card reveal">
+          <div class="solution-visual signal-chart" aria-hidden="true">
+            <svg viewBox="0 0 480 210" preserveAspectRatio="none"><path d="M0 165C70 150 103 151 155 128s95-7 146-48 96 20 179-50"/><path class="ghost" d="M0 114c78 4 113-30 177-18s91 43 145 17 104-20 158-11"/></svg>
+            <span class="chart-chip">persistent change</span>
+          </div>
+          <span class="card-index">02</span>
+          <h3>Risk screening</h3>
+          <p>Combine multiple signals to identify palms that warrant inspection—without treating one index or image as a diagnosis.</p>
+          <div class="tags"><span>Explainable score</span><span>Priority</span></div>
+        </article>
+        <article class="solution-card reveal">
+          <div class="solution-visual action-stack" aria-hidden="true">
+            <div><i></i><span>Inspect PW-2048</span><b>Today</b></div>
+            <div><i class="amber"></i><span>Revisit Block 06</span><b>3 days</b></div>
+            <div><i class="green"></i><span>Verify field note</span><b>Done</b></div>
+          </div>
+          <span class="card-index">03</span>
+          <h3>Field action system</h3>
+          <p>Turn flagged palms into assigned inspections, confirmation records, intervention follow-ups, and management reports.</p>
+          <div class="tags"><span>Assignments</span><span>Audit trail</span></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="method section" id="method">
+      <div class="method-intro reveal">
+        <span class="eyebrow eyebrow-light">The PalmWatch method</span>
+        <h2>Observe. Compare. Confirm. Act.</h2>
+        <p>Repeated evidence matters more than a single abnormal scan. PalmWatch is built around a closed learning loop between remote sensing and the field.</p>
+      </div>
+      <div class="method-list">
+        <article class="method-step reveal">
+          <span>01</span><div><h3>Map every palm</h3><p>Register boundaries, blocks, farms, and stable palm IDs before analysis begins.</p></div>
+          <svg aria-hidden="true" viewBox="0 0 64 64"><path d="M13 18l14-6 12 5 12-5v34l-12 6-12-5-14 6z"/><path d="M27 12v35m12-30v35"/></svg>
+        </article>
+        <article class="method-step reveal">
+          <span>02</span><div><h3>Capture calibrated evidence</h3><p>Collect repeat RGB, multispectral, thermal, weather, and field observations under controlled protocols.</p></div>
+          <svg aria-hidden="true" viewBox="0 0 64 64"><circle cx="32" cy="32" r="19"/><circle cx="32" cy="32" r="7"/><path d="M32 6v7m0 38v7M6 32h7m38 0h7"/></svg>
+        </article>
+        <article class="method-step reveal">
+          <span>03</span><div><h3>Score change, not snapshots</h3><p>Compare each palm with its own baseline, local peers, and confirmed reference cases.</p></div>
+          <svg aria-hidden="true" viewBox="0 0 64 64"><path d="M9 49l13-15 10 8 22-28"/><path d="M44 14h10v10"/></svg>
+        </article>
+        <article class="method-step reveal">
+          <span>04</span><div><h3>Confirm in the field</h3><p>Use agronomist inspection and laboratory evidence to validate labels and improve the model.</p></div>
+          <svg aria-hidden="true" viewBox="0 0 64 64"><path d="M15 33l11 11 23-25"/><circle cx="32" cy="32" r="25"/></svg>
+        </article>
+      </div>
+    </section>
+
+    <section class="research section" id="research">
+      <div class="research-visual reveal">
+        <img src="./assets/palmwatch-drone.png" alt="Drone surveying a mature oil-palm plantation">
+        <div class="floating-reading reading-one"><span>NDRE trend</span><strong>−8.4%</strong><small>needs review</small></div>
+        <div class="floating-reading reading-two"><span>Palm ID</span><strong>PW-2048</strong><small>Block 06</small></div>
+      </div>
+      <div class="research-copy reveal">
+        <span class="eyebrow eyebrow-light">Whole-plantation research</span>
+        <h2>Health is more than one disease.</h2>
+        <p>The expanded NBL research scope evaluates the context around every tree so the model can distinguish possible disease from water, nutrient, pest, and management stress.</p>
+        <div class="factor-cloud" aria-label="Research factors">
+          <span>Soil condition</span><span>Leaf condition</span><span>Seed variety</span><span>Geography</span><span>Irrigation</span><span>Fertilizer</span><span>Infestation</span><span>Intercropping</span><span>Adjacent farming</span><span>Plantation age</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="evidence section">
+      <div class="section-head reveal">
+        <div><span class="eyebrow eyebrow-light">Evidence architecture</span><h2>Signals become useful when they agree.</h2></div>
+        <p>No universal NDVI threshold can diagnose a palm. PalmWatch combines calibrated measurements, neighbour comparisons, temporal change, and confirmed field labels.</p>
+      </div>
+      <div class="evidence-grid">
+        <article class="evidence-card reveal"><span class="evidence-num">01</span><h3>Spectral</h3><p>NDVI, NDRE, GNDVI, red edge, NIR, and calibrated reflectance.</p></article>
+        <article class="evidence-card reveal"><span class="evidence-num">02</span><h3>Structural</h3><p>Crown area, density, symmetry, gaps, yellowing, and visible change.</p></article>
+        <article class="evidence-card reveal"><span class="evidence-num">03</span><h3>Thermal</h3><p>Canopy temperature, transpiration stress, and neighbour-relative anomalies.</p></article>
+        <article class="evidence-card reveal"><span class="evidence-num">04</span><h3>Contextual</h3><p>Soil, weather, age, seed, management history, and spatial clustering.</p></article>
+      </div>
+    </section>
+
+    <section class="faq section" id="faq">
+      <div class="faq-title reveal">
+        <span class="eyebrow eyebrow-light">Questions, answered</span>
+        <h2>Clear science.<br>Useful action.</h2>
+      </div>
+      <div class="accordion">
+        <details open class="reveal">
+          <summary>Does PalmWatch diagnose Ganoderma?</summary>
+          <p>No. PalmWatch detects patterns consistent with elevated risk and prioritizes palms for expert inspection. Field or laboratory confirmation remains essential.</p>
+        </details>
+        <details class="reveal">
+          <summary>Why are repeat surveys necessary?</summary>
+          <p>A persistent decline while nearby palms remain stable is more informative than a single unusual reading. Repetition also reduces seasonal and flight-condition noise.</p>
+        </details>
+        <details class="reveal">
+          <summary>What is the initial model target?</summary>
+          <p>The realistic first target is a three-way screen: healthy, other stress, and suspected Ganoderma. More detailed disease and severity labels require sufficient confirmed samples.</p>
+        </details>
+        <details class="reveal">
+          <summary>How is research data divided?</summary>
+          <p>Training, validation, and locked testing should be separated by farm—not randomly by tree—to prevent information leakage between similar palms from the same location.</p>
+        </details>
+      </div>
+    </section>
+
+    <section class="pilot" id="pilot">
+      <div class="pilot-shade"></div>
+      <div class="pilot-inner reveal">
+        <span class="eyebrow eyebrow-dark">Build the evidence base</span>
+        <h2>Ready to move from a demo to a validated field study?</h2>
+        <a class="button button-lime" href="#research">Review the study scope <span aria-hidden="true">↑</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-brand">
+      <a class="brand brand-footer" href="#home"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 42 42"><path d="M11 29c3-10 10-16 21-18-1 10-7 18-18 20"/><path class="vein" d="M14 29c4-5 9-9 16-14"/></svg></span><span>PalmWatch</span></a>
+      <p>Oil-palm intelligence, tree by tree.</p>
+    </div>
+    <div class="footer-links"><a href="#overview">Overview</a><a href="#method">Method</a><a href="#research">Research</a><a href="#faq">FAQ</a></div>
+    <div class="footer-note"><p>AI-assisted screening. Field-confirmed decisions.</p><span>© 2026 PalmWatch</span></div>
+  </footer>
+</body>
+</html>
